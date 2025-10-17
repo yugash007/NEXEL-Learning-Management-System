@@ -1,20 +1,129 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🌐 NEXEL: Learning Management System
 
-# Run and deploy your AI Studio app
+> **Version:** 1.0  
+> **Team Name:** Auralis  
+> **Project Type:** Web Application  
+> **Theme:** AI-Powered Learning Solutions  
+> **Deployed Link:** [NEXEL on Vercel 🚀](https://nexel-learning-management-system.vercel.app/)  
+> **Hackathon:** Synapse 2K25 – Mohan Babu University  
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/drive/1K0IgVTKJtj2DBu5bYUnNy0i5X3uzuFOe
+## 🧠 About the Project
 
-## Run Locally
+**NEXEL** is a modern, next-generation **Learning Management System (LMS)** designed to transform education through an engaging, interactive, and futuristic learning experience.  
 
-**Prerequisites:**  Node.js
+It bridges the gap between educators and learners by offering a seamless platform where **teachers can create and manage courses**, and **students can learn, collaborate, and track progress** — all in a beautifully designed, user-friendly interface.  
 
+Our goal is to **empower education through innovation**, bringing together technology, design, and interactivity into one integrated system.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## 👥 Team Auralis
+
+| Name | Year | Department |
+|------|------|-------------|
+| **Devineni Yugash** | II Year | B.Tech – Artificial Intelligence & Machine Learning |
+| **Devathi Naga Shamika** | II Year | B.Tech – Artificial Intelligence & Machine Learning |
+| **P S Eeshasree** | III Year | B.Tech – Artificial Intelligence & Machine Learning |
+| **Matli Divyasree** | III Year | B.Tech – Artificial Intelligence & Machine Learning |
+
+> *“Auralis” signifies the light of innovation — spreading knowledge through technology.*
+
+---
+
+## 🚀 Core Features
+
+### 🎓 For Students
+- **Course Discovery:** Explore and enroll in diverse courses with prerequisite checks.  
+- **Personal Dashboard:** Track enrolled courses, progress, announcements, and badges.  
+- **Interactive Learning:** Access videos, notes, and submit assignments easily.  
+- **Performance Reports:** View and download PDF-based grade reports.  
+- **Discussion Forums:** Engage with teachers and peers.  
+- **Profile Management:** View personal learning stats and achievements.  
+- **Gamification:** Celebrate 100% course completion with confetti animations!  
+
+### 🧑‍🏫 For Teachers
+- **Course Management:** Create and manage courses with ease.  
+- **Content Uploads:** Add modules, videos, and study materials.  
+- **Assignments & Grading:** Review submissions and share feedback.  
+- **Announcements & Forums:** Interact with students through discussions.  
+- **Dashboard Overview:** Monitor and manage all courses centrally.
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|--------|-------------|
+| **Frontend** | React (with TypeScript) |
+| **Styling** | Tailwind CSS (via CDN) |
+| **Routing** | React Router |
+| **Database** | Firebase / In-Memory Mock API (demo mode) |
+| **PDF Reports** | jsPDF & jsPDF-AutoTable |
+| **Design Tool** | Figma (AI-assisted for layout and export) |
+
+> Lightweight, browser-based, and built for performance — no backend setup required.
+
+---
+
+## 💡 Key Highlights
+
+- 🧭 *Completely client-side LMS — no server configuration required*  
+- 🧱 *All dependencies imported via CDN (no npm build)*  
+- 🕹️ *Modern neo-futuristic design with subtle animations*  
+- 📄 *Auto-generated student performance PDFs*  
+- 🔐 *Firebase-ready structure for scalability*  
+
+---
+
+## 🧰 How to Run Locally
+
+### Option 1: Using Python HTTP Server
+1. Open the project root folder in the terminal.  
+2. Run:
+   ```bash
+   python -m http.server
+Open your browser and go to:
+
+arduino
+Copy code
+http://localhost:8000
+The app will load instantly — ready to explore!
+
+Option 2: Using VS Code Live Server
+Install the Live Server extension in VS Code.
+
+Right-click on index.html → Select “Open with Live Server.”
+
+The app will automatically open in your browser.
+
+⚠️ Note: The application uses an in-memory mock API, so all stored data resets upon page refresh.
+
+🏁 Future Scope
+🔐 Firebase Authentication & Firestore Integration
+
+🤖 AI-based Personalized Course Recommendation System
+
+💬 Real-Time Chat & Notifications
+
+🧠 Learning Analytics Dashboard
+
+☁️ Cloud Deployment (Firebase Hosting / Vercel Pro)
+
+🎨 UI & UX Design
+The design philosophy follows neo-futurism — clean, responsive, and immersive:
+
+Elegant glassmorphism with minimal gradients
+
+Subtle transitions for user actions
+
+Consistent typography and spacing
+
+Mobile-friendly layouts
+
+Designed using Figma + AI Plugin for precision and responsiveness.
+
+💬 Team Statement
+“Education is not just the transfer of information — it’s the evolution of understanding.
+Through NEXEL, we aim to make learning more human, immersive, and intelligent.”
