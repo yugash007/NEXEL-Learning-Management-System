@@ -32,7 +32,11 @@ const ModuleEditor: React.FC<{ courseId: string; module: Module; onContentUpdate
         if (!materialTitle || !materialFile) return;
         setSubmittingMaterial(true);
         try {
+<<<<<<< HEAD
             await api.addStudyMaterialToModule(courseId, module.id, materialTitle, materialFile);
+=======
+            await api.addStudyMaterialToModule(courseId, module.id, materialTitle, materialFile.name);
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             setMaterialTitle('');
             setMaterialFile(null);
             (e.target as HTMLFormElement).reset();
@@ -58,7 +62,11 @@ const ModuleEditor: React.FC<{ courseId: string; module: Module; onContentUpdate
                         <h5 className="font-medium mb-2 text-on-surface-secondary">Study Materials</h5>
                         {module.studyMaterials.length > 0 ? (
                             <ul className="list-disc pl-5 text-sm space-y-1 text-on-surface-secondary">
+<<<<<<< HEAD
                                 {module.studyMaterials.map(m => <li key={m.id}>{m.title} ({m.originalFileName})</li>)}
+=======
+                                {module.studyMaterials.map(m => <li key={m.id}>{m.title} ({m.fileName})</li>)}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                             </ul>
                         ) : <p className="text-xs text-on-surface-secondary">No materials in this module.</p>}
                     </div>

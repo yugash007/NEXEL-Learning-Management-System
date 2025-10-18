@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "nexel:-learning-management-system",
+=======
+  "name": "copy-of-nexel:-learning-management-system",
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +15,12 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+<<<<<<< HEAD
     "react-router-dom": "^7.9.4",
     "firebase": "^12.4.0"
+=======
+    "react-router-dom": "^7.9.4"
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

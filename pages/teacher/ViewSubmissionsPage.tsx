@@ -122,23 +122,38 @@ const ViewSubmissionsPage: React.FC = () => {
         }
     };
     
+<<<<<<< HEAD
     const renderSubmissionContent = (submission: Submission) => {
         if (submission.submissionFileUrl) {
+=======
+    const renderSubmissionContent = (content: string) => {
+        if (content.startsWith('File: ')) {
+            const fileName = content.replace('File: ', '');
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             return (
                  <div className="flex items-center p-4 bg-surface rounded-md border border-border-color">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-on-surface-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
+<<<<<<< HEAD
                     <a href={submission.submissionFileUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline truncate" download={submission.submissionFileName}>
                         {submission.submissionFileName}
+=======
+                    <a href="#" onClick={(e) => e.preventDefault()} className="text-primary hover:underline truncate" title="File download is not implemented in this mock.">
+                        {fileName}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                     </a>
                 </div>
             );
         }
+<<<<<<< HEAD
         if (submission.content) {
             return <p className="whitespace-pre-wrap p-4 bg-surface rounded-md border border-border-color text-on-surface-secondary">{submission.content}</p>;
         }
         return <p className="p-4 text-center text-on-surface-secondary italic">No content submitted.</p>;
+=======
+        return <p className="whitespace-pre-wrap p-4 bg-surface rounded-md border border-border-color text-on-surface-secondary">{content}</p>;
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     };
 
     if (loading) return <div className="flex justify-center"><Spinner /></div>;
@@ -158,7 +173,11 @@ const ViewSubmissionsPage: React.FC = () => {
                         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <h3 className="font-semibold mb-2">Submission Content</h3>
+<<<<<<< HEAD
                                 {renderSubmissionContent(sub)}
+=======
+                                {renderSubmissionContent(sub.content)}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                             </div>
                             <div>
                                 <h3 className="font-semibold mb-2">Grade & Review</h3>

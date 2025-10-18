@@ -27,7 +27,10 @@ const MyGradesPage: React.FC = () => {
     }, [user]);
 
     const groupedSubmissions = useMemo(() => {
+<<<<<<< HEAD
         // FIX: Explicitly typed the initial value of the `reduce` accumulator to ensure correct type inference for `groupedSubmissions`.
+=======
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
         return submissions.reduce((acc, sub) => {
             const courseId = sub.courseId || 'unknown';
             if (!acc[courseId]) {

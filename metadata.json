@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "NEXEL: Learning Management System",
+=======
+  "name": "Copy of NEXEL: Learning Management System",
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
   "description": "A multi-user platform for educators and students. Teachers can create courses, add assignments, and grade submissions. Students can browse and enroll in courses, submit assignments, and view their grades.",
   "requestFramePermissions": []
 }

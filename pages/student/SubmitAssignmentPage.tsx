@@ -40,15 +40,25 @@ const SubmitAssignmentPage: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+<<<<<<< HEAD
         if (!assignmentId || !user || (!content.trim() && !file)) {
             setError('Please provide a submission text or upload a file.');
+=======
+        if (!assignmentId || !user || (!content && !file)) {
+            setError('Please provide a submission.');
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             return;
         };
 
         setSubmitting(true);
         setError(null);
         try {
+<<<<<<< HEAD
             await api.createSubmission(assignmentId, user.id, content, file || undefined);
+=======
+            const submissionContent = file ? `File: ${file.name}` : content;
+            await api.createSubmission(assignmentId, user.id, submissionContent);
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             navigate(`/courses/${assignment?.courseId}`);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to submit.');
@@ -88,6 +98,10 @@ const SubmitAssignmentPage: React.FC = () => {
                         className="mt-1 block w-full bg-surface border border-border-color rounded-lg placeholder-on-surface-secondary focus:ring-2 focus:ring-primary focus:border-primary text-on-surface transition-colors duration-200 disabled:bg-surface/50 disabled:cursor-not-allowed"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+<<<<<<< HEAD
+=======
+                        required={!file}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                         disabled={!!file}
                     />
                 </div>
@@ -119,7 +133,12 @@ const SubmitAssignmentPage: React.FC = () => {
                                 hover:file:bg-primary/20
                                 disabled:opacity-50 disabled:cursor-not-allowed"
                             onChange={handleFileChange}
+<<<<<<< HEAD
                             disabled={!!content.trim()}
+=======
+                            required={!content}
+                            disabled={!!content}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                         />
                     </div>
                 </div>

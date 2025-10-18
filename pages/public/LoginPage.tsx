@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+<<<<<<< HEAD
+=======
+import * as api from '../../services/api';
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
+<<<<<<< HEAD
     const [password, setPassword] = useState('');
+=======
+    const [password, setPassword] = useState(''); // Password is for UI only in this mock
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const { login } = useAuth();
@@ -17,10 +25,19 @@ const LoginPage: React.FC = () => {
         setError('');
         setLoading(true);
         try {
+<<<<<<< HEAD
             await login(email, password);
             navigate('/dashboard');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Login failed. Please check your credentials.');
+=======
+            // In a real app, you'd send email and password. Here we just use email to find the user.
+            const { token, user } = await api.login(email);
+            login(token, user);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Login failed');
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
         } finally {
             setLoading(false);
         }

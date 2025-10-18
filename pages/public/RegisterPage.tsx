@@ -21,8 +21,13 @@ const RegisterPage: React.FC = () => {
         setError('');
         setLoading(true);
         try {
+<<<<<<< HEAD
             await api.register(name, email, password, role);
             // The onAuthStateChanged listener in AuthContext will handle the redirect
+=======
+            const { token, user } = await api.register(name, email, role);
+            login(token, user);
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             navigate('/dashboard');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Registration failed');

@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+<<<<<<< HEAD
 # Environment variables
 .env
 .env.local
@@ -31,4 +32,6 @@ dist-ssr
 # Vercel
 .vercel
 
+=======
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 .vercel

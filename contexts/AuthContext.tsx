@@ -1,11 +1,17 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import type { User } from '../types';
 import { Role } from '../types';
 import * as api from '../services/api';
+<<<<<<< HEAD
 import { auth } from '../firebase';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
+=======
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 
 interface AuthContextType {
     user: User | null;
@@ -13,8 +19,13 @@ interface AuthContextType {
     loading: boolean;
     isStudent: boolean;
     isTeacher: boolean;
+<<<<<<< HEAD
     login: (email: string, password: string) => Promise<{ token: string; user: User; }>;
     logout: () => Promise<void>;
+=======
+    login: (token: string, user: User) => void;
+    logout: () => void;
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     updateUserContext: (updatedUser: User) => void;
 }
 
@@ -22,6 +33,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
+<<<<<<< HEAD
     const [token, setToken] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -88,6 +100,41 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         await api.logout();
     };
 
+=======
+    const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
+    const [loading, setLoading] = useState<boolean>(true);
+
+    const logout = useCallback(() => {
+        setUser(null);
+        setToken(null);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+    }, []);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        const storedUser = localStorage.getItem('user');
+
+        if (storedToken && storedUser) {
+            setToken(storedToken);
+            try {
+                const parsedUser: User = JSON.parse(storedUser);
+                setUser(parsedUser);
+            } catch (error) {
+                console.error("Failed to parse user from localStorage", error);
+                logout();
+            }
+        }
+        setLoading(false);
+    }, [logout]);
+
+    const login = (newToken: string, newUser: User) => {
+        setToken(newToken);
+        setUser(newUser);
+        localStorage.setItem('token', newToken);
+        localStorage.setItem('user', JSON.stringify(newUser));
+    };
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 
     const updateUserContext = (updatedUser: User) => {
         setUser(updatedUser);
@@ -106,7 +153,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         login,
         logout,
         updateUserContext
+<<<<<<< HEAD
     }), [user, token, loading, isStudent, isTeacher]);
+=======
+    }), [user, token, loading, isStudent, isTeacher, logout]);
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 
     return (
         <AuthContext.Provider value={value}>

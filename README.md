@@ -4,7 +4,8 @@
 > **Team Name:** Auralis  
 > **Project Type:** Web Application  
 > **Theme:** AI-Powered Learning Solutions  
-> **Deployed Link:** [NEXEL on Vercel 🚀](https://nexel-learning-management-system.vercel.app/)  
+> **Deployed Link:** [NEXEL on Vercel 🚀](https://nexel-learning-management-system-1-mrz4ljgpq.vercel.app/)  
+> **GitHub Repository:** [Source Code](https://github.com/yugash007/NEXEL-Learning-Management-System)  
 > **Hackathon:** Synapse 2K25 – Mohan Babu University  
 
 ---
@@ -16,6 +17,31 @@
 It bridges the gap between educators and learners by offering a seamless platform where **teachers can create and manage courses**, and **students can learn, collaborate, and track progress** — all in a beautifully designed, user-friendly interface.  
 
 Our goal is to **empower education through innovation**, bringing together technology, design, and interactivity into one integrated system.
+
+---
+
+## 🔒 Security Notice
+
+This project uses environment variables to secure sensitive Firebase configuration. The actual API keys are **NOT** committed to the repository.
+
+### Setting Up Environment Variables
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Fill in your Firebase configuration values in `.env`
+
+3. For Vercel deployment, add these environment variables in your Vercel project settings:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_DATABASE_URL`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+   - `VITE_FIREBASE_MEASUREMENT_ID`
 
 ---
 

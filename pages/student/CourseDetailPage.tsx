@@ -93,7 +93,11 @@ const CourseDetailPage: React.FC = () => {
             }
 
             const assignmentsData = await api.getAssignmentsByCourseId(courseId);
+<<<<<<< HEAD
             const submissionsData = await api.getEnrichedSubmissionsByStudentId(user.id);
+=======
+            const submissionsData = await api.getSubmissionsByStudentId(user.id);
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
             const announcementsData = await api.getAnnouncementsByCourseId(courseId);
             const reviewsData = await api.getReviewsByCourseId(courseId);
 
@@ -192,6 +196,7 @@ const CourseDetailPage: React.FC = () => {
         doc.save(`NEXEL_Certificate_${courseTitle.replace(/\s/g, '_')}.pdf`);
     };
     
+<<<<<<< HEAD
     const handleViewMaterial = (material: StudyMaterial) => {
         window.open(material.fileUrl, '_blank');
     };
@@ -205,6 +210,46 @@ const CourseDetailPage: React.FC = () => {
         document.body.removeChild(a);
     };
 
+=======
+    // --- Study Material Handlers ---
+    const generateMockFileContent = (material: StudyMaterial): { blob: Blob } => {
+        const textContent = `Mock Content for: ${material.title}\n\nFile Name: ${material.fileName}\n\nThis is simulated content for demonstration purposes. In a real application, this would be the actual file content fetched from a server.`;
+
+        if (material.fileName.toLowerCase().endsWith('.pdf')) {
+            // @ts-ignore
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text(textContent, 10, 10);
+            const pdfBlob = doc.output('blob');
+            return { blob: pdfBlob };
+        } 
+        
+        const textBlob = new Blob([textContent], { type: 'text/plain' });
+        return { blob: textBlob };
+    };
+
+    const handleViewMaterial = (material: StudyMaterial) => {
+        const { blob } = generateMockFileContent(material);
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+    };
+
+    const handleDownloadMaterial = (material: StudyMaterial) => {
+        const { blob } = generateMockFileContent(material);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = material.fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+
+    // --- Custom Video Player Logic ---
+
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     const getYouTubeId = (url: string): string | null => {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         const match = url.match(regExp);
@@ -253,8 +298,16 @@ const CourseDetailPage: React.FC = () => {
     const handlePlayPause = () => {
         if (!playerRef.current) return;
         const playerState = playerRef.current.getPlayerState();
+<<<<<<< HEAD
         if (playerState === 1) playerRef.current.pauseVideo();
         else playerRef.current.playVideo();
+=======
+        if (playerState === 1) {
+            playerRef.current.pauseVideo();
+        } else {
+            playerRef.current.playVideo();
+        }
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     };
 
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -270,13 +323,22 @@ const CourseDetailPage: React.FC = () => {
     
     const handleMuteToggle = () => {
         if (!playerRef.current) return;
+<<<<<<< HEAD
         if (isMuted) playerRef.current.unMute();
         else playerRef.current.mute();
+=======
+        if (isMuted) {
+            playerRef.current.unMute();
+        } else {
+            playerRef.current.mute();
+        }
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
         setIsMuted(!isMuted);
     };
 
     const handleFullscreen = () => {
         const iframe = playerContainerRef.current?.querySelector('iframe');
+<<<<<<< HEAD
         if (iframe?.requestFullscreen) iframe.requestFullscreen();
     };
 
@@ -284,6 +346,25 @@ const CourseDetailPage: React.FC = () => {
     if (loading) return <div className="flex justify-center"><Spinner /></div>;
     if (error) return <p className="text-center text-red-500">{error}</p>;
     if (!course) return <p className="text-center">Course not found.</p>;
+=======
+        if (iframe && iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        }
+    };
+
+
+    if (loading) {
+        return <div className="flex justify-center"><Spinner /></div>;
+    }
+
+    if (error) {
+        return <p className="text-center text-red-500">{error}</p>;
+    }
+
+    if (!course) {
+        return <p className="text-center">Course not found.</p>;
+    }
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     
     const statusBadge = (status: EnrichedAssignment['submissionStatus']) => {
         const baseClasses = "px-2.5 py-0.5 text-xs font-semibold rounded-full";
@@ -298,6 +379,10 @@ const CourseDetailPage: React.FC = () => {
     const canReview = course.progress === 100 && !userHasReviewed;
     const isCompleted = course.progress === 100;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     return (
         <div className="max-w-7xl mx-auto space-y-12">
             <header>
@@ -308,10 +393,23 @@ const CourseDetailPage: React.FC = () => {
                     </div>
                      <div className="flex items-center space-x-4">
                         <Link to={`/courses/${course.id}/forum`}>
+<<<<<<< HEAD
                             <Button variant="ghost"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V10a2 2 0 012-2h8z" /></svg>Discussion Forum</Button>
                         </Link>
                         {isCompleted && (
                             <Button onClick={handleDownloadCertificate} variant="secondary"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" /><path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" /></svg>Download Certificate</Button>
+=======
+                            <Button variant="ghost">
+                               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V10a2 2 0 012-2h8z" /></svg>
+                                Discussion Forum
+                            </Button>
+                        </Link>
+                        {isCompleted && (
+                            <Button onClick={handleDownloadCertificate} variant="secondary">
+                               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" /><path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" /></svg>
+                                Download Certificate
+                            </Button>
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                         )}
                     </div>
                 </div>
@@ -322,13 +420,25 @@ const CourseDetailPage: React.FC = () => {
                             <span className="font-bold text-amber-400">{course.averageRating.toFixed(1)}</span>
                             <span className="text-sm text-on-surface-secondary">({reviews.length} reviews)</span>
                         </>
+<<<<<<< HEAD
                     ) : <span className="text-sm text-on-surface-secondary">No reviews yet</span>}
+=======
+                    ) : (
+                        <span className="text-sm text-on-surface-secondary">No reviews yet</span>
+                    )}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                 </div>
                 {prerequisiteCourses.length > 0 && (
                     <div className="flex items-start text-sm text-on-surface-secondary mb-4">
                        <strong className="mr-2 shrink-0">Prerequisites:</strong>
                        <div className="flex flex-wrap gap-x-2">
+<<<<<<< HEAD
                             {prerequisiteCourses.map(prereq => <Link key={prereq.id} to={`/courses/${prereq.id}`} className="text-primary hover:underline">{prereq.title}</Link>)}
+=======
+                            {prerequisiteCourses.map(prereq => (
+                                <Link key={prereq.id} to={`/courses/${prereq.id}`} className="text-primary hover:underline">{prereq.title}</Link>
+                            ))}
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
                        </div>
                     </div>
                 )}

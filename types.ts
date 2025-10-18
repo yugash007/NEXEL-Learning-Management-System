@@ -30,8 +30,12 @@ export interface Video {
 export interface StudyMaterial {
     id: string;
     title: string;
+<<<<<<< HEAD
     fileUrl: string;
     originalFileName: string;
+=======
+    fileName: string;
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 }
 
 export interface Module {
@@ -68,9 +72,13 @@ export interface Submission {
     assignmentId: string;
     studentId: string;
     studentName?: string;
+<<<<<<< HEAD
     content?: string; // Text content, now optional
     submissionFileUrl?: string;
     submissionFileName?: string;
+=======
+    content: string;
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
     grade: {
         internal: number | null;
         external: number | null;
@@ -78,8 +86,11 @@ export interface Submission {
     } | null;
     letterGrade?: string;
     review?: string;
+<<<<<<< HEAD
     feedbackFileUrl?: string;
     feedbackFileName?: string;
+=======
+>>>>>>> c5d459428a2fba052cd0e7654482653475d7bac3
 }
 
 export interface EnrichedAssignment extends Assignment {
