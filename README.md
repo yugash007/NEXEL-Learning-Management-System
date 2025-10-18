@@ -4,7 +4,8 @@
 > **Team Name:** Auralis  
 > **Project Type:** Web Application  
 > **Theme:** AI-Powered Learning Solutions  
-> **Deployed Link:** [NEXEL on Vercel 🚀](https://nexel-learning-management-system-1-mrz4ljgpq.vercel.app/)  
+> **Deployed Link:** [NEXEL on Vercel 🚀](https://nexel-learning-management-system-1-mrz4ljgpq.vercel.app/)
+> **Link** [NEXEL](https://nexel-learning-management-system-1.vercel.app/)
 > **GitHub Repository:** [Source Code](https://github.com/yugash007/NEXEL-Learning-Management-System)  
 > **Hackathon:** Synapse 2K25 – Mohan Babu University  
 
