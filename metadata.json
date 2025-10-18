@@ -1,0 +1,5 @@
+{
+  "name": "NEXEL: Learning Management System",
+  "description": "A multi-user platform for educators and students. Teachers can create courses, add assignments, and grade submissions. Students can browse and enroll in courses, submit assignments, and view their grades.",
+  "requestFramePermissions": []
+}

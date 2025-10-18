@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXEL: Learning Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              'primary': '#8b5cf6', // violet-500
+              'primary-hover': '#7c3aed', // violet-600
+              'secondary': '#38bdf8', // sky-400
+              'secondary-hover': '#0ea5e9', // sky-500
+              'background': '#0D1117',
+              'surface': '#1F2937', // gray-800
+              'surface-glass': 'rgba(31, 41, 55, 0.6)', // gray-800 with transparency
+              'border-color': '#374151', // gray-700
+              'on-surface': '#F9FAFB', // gray-50
+              'on-surface-secondary': '#9CA3AF', // gray-400
+            },
+            boxShadow: {
+              'glow-primary': '0 0 20px rgba(139, 92, 246, 0.4)',
+              'glow-secondary': '0 0 20px rgba(56, 189, 248, 0.4)',
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+    "firebase/database": "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js",
+    "firebase/storage": "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.4.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background text-on-surface font-sans antialiased">
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

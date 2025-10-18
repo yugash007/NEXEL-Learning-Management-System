@@ -1,0 +1,92 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        // Any authenticated user can read public profile info (name, role).
+        ".read": "auth != null",
+        // A user can only write to their own profile.
+        ".write": "auth.uid === $uid"
+      }
+    },
+    "courses": {
+      ".indexOn": "teacherId",
+      // Any authenticated user can read the list of courses.
+      ".read": "auth != null",
+      "$courseId": {
+        ".write": "
+          // Rule for CREATING a new course:
+          // The user must be a teacher AND their UID must match the teacherId in the new data.
+          (newData.exists() && !data.exists() && root.child('users').child(auth.uid).child('role').val() === 'Teacher' && newData.child('teacherId').val() === auth.uid)
+          ||
+          // Rule for UPDATING an existing course:
+          (data.exists() && newData.exists() && (
+            // The teacher of the course can update any part of it.
+            (data.child('teacherId').val() === auth.uid)
+            ||
+            // A student can only write to the 'studentsEnrolled' list to add themselves.
+            (newData.child('studentsEnrolled').child(auth.uid).val() === true && !data.child('studentsEnrolled').child(auth.uid).exists())
+          ))
+        "
+      }
+    },
+    "assignments": {
+      ".indexOn": "courseId",
+      // Any authenticated user can read assignments.
+      ".read": "auth != null",
+      "$assignmentId": {
+        // Only the teacher of the course can create or modify an assignment.
+        ".write": "root.child('users').child(auth.uid).child('role').val() === 'Teacher' && root.child('courses').child(newData.child('courseId').val()).child('teacherId').val() === auth.uid"
+      }
+    },
+    "submissions": {
+      ".indexOn": ["assignmentId", "studentId"],
+      "$submissionId": {
+        // The student who made the submission or the course teacher can read it.
+        ".read": "auth.uid === data.child('studentId').val() || root.child('courses').child(root.child('assignments').child(data.child('assignmentId').val()).child('courseId').val()).child('teacherId').val() === auth.uid",
+        // A student can only create a submission for themselves.
+        // A teacher can update a submission (i.e., grade it).
+        ".write": "(newData.exists() && !data.exists() && newData.child('studentId').val() === auth.uid) || (data.exists() && root.child('courses').child(root.child('assignments').child(data.child('assignmentId').val()).child('courseId').val()).child('teacherId').val() === auth.uid)"
+      }
+    },
+    "announcements": {
+      ".indexOn": "courseId",
+      ".read": "auth != null",
+      "$announcementId": {
+        // Only the teacher of the course can create an announcement.
+        ".write": "root.child('users').child(auth.uid).child('role').val() === 'Teacher' && root.child('courses').child(newData.child('courseId').val()).child('teacherId').val() === auth.uid"
+      }
+    },
+    "notifications": {
+      ".indexOn": "userId",
+      "$notificationId": {
+        // A user can only read or update their own notifications.
+        ".read": "data.child('userId').val() === auth.uid",
+        ".write": "data.child('userId').val() === auth.uid"
+      }
+    },
+    "reviews": {
+      ".indexOn": "courseId",
+      ".read": "auth != null",
+      "$reviewId": {
+        // A user can only create a review for themselves.
+        ".write": "newData.child('studentId').val() === auth.uid"
+      }
+    },
+    "threads": {
+      ".indexOn": "courseId",
+      ".read": "auth != null",
+      "$threadId": {
+        // Author can create/edit/delete.
+        ".write": "newData.child('authorId').val() === auth.uid"
+      }
+    },
+    "replies": {
+      ".indexOn": "threadId",
+      ".read": "auth != null",
+      "$replyId": {
+        // Author can create/edit/delete.
+        ".write": "newData.child('authorId').val() === auth.uid"
+      }
+    }
+  }
+}
